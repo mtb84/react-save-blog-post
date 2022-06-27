@@ -6,7 +6,7 @@ function App() {
 
   const [title, setTitle] = useState("")
   const [body, setBody] = useState("");
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState("")
 
   const updateTitle = (e) => {
     setTitle(e.target.value);
@@ -17,9 +17,10 @@ function App() {
   }
 
   const addPost = (e) => {
+    e.preventDefault();
     const newPost = {
-      title,
-      body,
+      title: '',
+      body: '',
     };
     setPosts([...posts, newPost]);
     setTitle("");
@@ -34,10 +35,10 @@ function App() {
       <form onSubmit={addPost}>
           <h2>Write and Save Blog</h2>
           <label htmlFor="title">Blog Title</label> <br />
-          <input id="title" type="text" name='title' value={title} onChange={updateTitle} />
+          <input id="title" type="text" name='title' placeholder='Title' value={title} onChange={updateTitle} />
           <br />
           <label htmlFor='blog' >New Blog</label> <br />
-          <textarea value={body} onChange={updateBody}> </textarea> <br />
+          <textarea value={body} placeholder="Body"onChange={updateBody}> </textarea> <br />
           <button type="submit">Save</button>
       </form>
 
